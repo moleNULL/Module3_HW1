@@ -1,4 +1,4 @@
-﻿namespace CustomList.TestClassesForForeach
+﻿namespace TestClassesForForeach
 {
     internal class AustraliaContinent : Continent
     {

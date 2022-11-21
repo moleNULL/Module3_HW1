@@ -1,4 +1,4 @@
-﻿namespace CustomList.TestClassesForForeach
+﻿namespace TestClassesForForeach
 {
     // Test class for implementing enumerator for a custom class
     // to use it in foreach loop

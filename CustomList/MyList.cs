@@ -1,10 +1,13 @@
-﻿namespace MyCollections.Generic
+﻿using System.Collections;
+using CustomList;
+
+namespace MyCollections.Generic
 {
     // Count, Capacity
     // Add(), AddRange(), Remove(), RemoveAt()
     // Sort(), Sort(IComparer<T>? comparer), Reverse(), ToArray(), Clear()
     // GetEnumerator()
-    internal class MyList<T>
+    internal class MyList<T> : IEnumerable<T>
     {
         private T[] _arr;
         private int _size;
@@ -130,13 +133,10 @@
         public void Reverse() => Array.Reverse(_arr, 0, _size);
 
         // enabling foreach
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (int i = 0; i < _size; i++)
-            {
-                yield return _arr[i];
-            }
-        }
+        public IEnumerator<T> GetEnumerator() => new MyListEnumerator<T>(_arr, _size);
+
+        // a mandatory plug for IEnumerable<T>
+        IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
 
         public T[] ToArray()
         {

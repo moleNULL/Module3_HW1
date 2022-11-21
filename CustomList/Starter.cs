@@ -1,5 +1,5 @@
-﻿using CustomList.TestClassesForForeach;
-using MyCollections.Generic;
+﻿using MyCollections.Generic;
+using TestClassesForForeach;
 
 namespace CustomList
 {
@@ -92,7 +92,7 @@ namespace CustomList
             Console.WriteLine($"\n\tMyList<T> info: Count: {list.Count} | Capacity: {list.Capacity}\n");
         }
 
-        // convert all values in the MyList<int> into a single string
+        // Convert all values in the MyList<int> into a single string
         private static string ListToString(MyList<int> list)
         {
             string str = string.Empty;
@@ -105,7 +105,7 @@ namespace CustomList
             return str;
         }
 
-        // the same method as PrintListInfo() but working with only with int[]
+        // The same method as PrintListInfo() but working with only with int[]
         private static string PrintArray(int[] arr)
         {
             string str = string.Empty;

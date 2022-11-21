@@ -1,28 +1,32 @@
 ﻿using System.Collections;
 
-namespace TestClassesForForeach
+namespace CustomList
 {
-    internal class ContinentEnumerator : IEnumerator<string>
+    internal class MyListEnumerator<T> : IEnumerator<T>
     {
-        private readonly string[] _countries;
+        private readonly T[] _arr;
+        private readonly int _size;
         private int _position;
 
-        public ContinentEnumerator(string[] countries)
+        // _size is mandatory because _arr.Length == MyList<T>().Capacity
+        // and _size == MyList<T>().Count
+        public MyListEnumerator(T[] arr, int size)
         {
-            _countries = countries;
+            _arr = arr;
+            _size = size;
             _position = -1;
         }
 
-        public string Current
+        public T Current
         {
             get
             {
-                if (_position == -1 || _position >= _countries.Length)
+                if (_position == -1 || _position >= _size)
                 {
                     throw new IndexOutOfRangeException();
                 }
 
-                return _countries[_position];
+                return _arr[_position];
             }
         }
 
@@ -33,7 +37,7 @@ namespace TestClassesForForeach
         {
             _position++;
 
-            if (_position < _countries.Length)
+            if (_position < _size)
             {
                 return true;
             }
@@ -41,10 +45,7 @@ namespace TestClassesForForeach
             return false;
         }
 
-        public void Reset()
-        {
-            _position = -1;
-        }
+        public void Reset() => _position = -1;
 
         public void Dispose()
         {
